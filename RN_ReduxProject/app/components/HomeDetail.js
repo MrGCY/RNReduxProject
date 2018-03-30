@@ -16,8 +16,8 @@ import {
  */
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux'
-//获取所有的方法
-import * as actionCreaters from '../actions';
+//获取所有的方法集合对象
+import * as actionCreaters from '../actions/HomeDetailAction';
 
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
