@@ -38,6 +38,7 @@ class Home extends Component{
         this.pageNum = 1
     }
     componentWillMount() {
+        console.log('---------------componentWillMount');
         //发送 action事件
         this.props.dispatch(fetchHomeList(this.pageNum));
     }
@@ -45,11 +46,7 @@ class Home extends Component{
     refreshData = ()=> {
         //准备刷新数据
         this.props.dispatch(readyLoadData());
-        //移除数组所有元素
-        for (var i = 0 ; i < this.state.dataArr.length ; i++){
-            this.state.dataArr.splice();
-        }
-        this.pageNum = 1,
+        this.pageNum = 1;
         setTimeout(()=> {
             //获取数据
             this.props.dispatch(fetchHomeList(this.pageNum));
@@ -57,7 +54,8 @@ class Home extends Component{
     }
     //加载更多数据
     loadData = ()=> {
-        this.pageNum += 1,
+        this.pageNum += 1;
+        console.log('加载更多数据---------------' + this.pageNum);
         //获取数据
         this.props.dispatch(fetchHomeList(this.pageNum));
     }
@@ -76,12 +74,10 @@ class Home extends Component{
             );
         }else{
             //已经加载完了
-            //合并数组
-            this.state.dataArr = this.state.dataArr.concat(homeListReducer.dataSource);
             return (
                 <ListView
                     style={{marginTop:64,backgroundColor : '#e8e8e8'}}
-                    dataSource={this.dataSource.cloneWithRows(this.state.dataArr)}
+                    dataSource={this.dataSource.cloneWithRows(homeListReducer.dataSource)}
                     renderRow={this.renderRowCell}
                     refreshControl = {
                         //刷新控件
