@@ -16,8 +16,15 @@ import {
  */
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux'
+
+
 //获取所有的方法集合对象
+//1.第一种写法
 import * as actionCreaters from '../actions/HomeDetailAction';
+//2.第二种写法 但是该路径下必须包含一个类似index.js的内容 目的是导入对应action的所有方法
+// import * as actionCreaters from '../actions';
+
+
 
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
